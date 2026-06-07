@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Analyzer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .btn-analyze {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 12px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+    h1 { color: #667eea; font-weight: 700; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-5">
+        <h1 class="text-center mb-2">📄 Resume Analyzer</h1>
+        <p class="text-center text-muted mb-4">Upload your resume and get AI powered analysis!</p>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label fw-bold">Your Name</label>
+            <input type="text" name="name" class="form-control form-control-lg" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Email Address</label>
+            <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-bold">Upload Resume</label>
+            <input type="file" name="resume_file" class="form-control form-control-lg" accept=".pdf,.docx" required>
+            <small class="text-muted">PDF or Word document only</small>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-analyze">
+              🔍 Analyze My Resume
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
